@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+<meta content="mkdocs-1.6.1, mkdocs-terminal-4.7.0" name="generator"/>
+<meta content="captradeoff" name="author"/>
+<link href="https://d-sys.wiki/fundamentals/" rel="canonical"/><link href="../img/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png">
+<link href="../img/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="../img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../img/favicon.ico" rel="shortcut icon" sizes="48x48" type="image/png"/>
+<link href="../img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="../img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<title>fundamentals - d-sys.wiki</title>
+<link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet"/>
+<link href="../css/fontawesome/css/solid.min.css" rel="stylesheet"/>
+<link href="../css/normalize.css" rel="stylesheet"/>
+<link href="../css/terminal.css" rel="stylesheet"/>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme.tile_grid.css" rel="stylesheet"/>
+<link href="../css/theme.footer.css" rel="stylesheet"/>
+<!-- gruvbox_dark color palette -->
+<link href="../css/palettes/gruvbox_dark.css" rel="stylesheet"/>
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+<link href="../style.css" rel="stylesheet"/>
+<meta content="@dsyswiki" name="twitter:site">
+<meta content="@captradeoff" name="twitter:creator">
+<!-- RSS Feed -->
+<link href="https://d-sys.wiki/feed_rss_created.xml" rel="alternate" title="RSS feed of created content" type="application/rss+xml">
+<link href="https://d-sys.wiki/feed_rss_updated.xml" rel="alternate" title="RSS feed of updated content" type="application/rss+xml">
+<!-- llms.txt -->
+<link href="https://d-sys.wiki/llms.txt" rel="alternate" title="llms.txt" type="text/plain">
+<!-- search css support -->
+<link href="../css/search/bootstrap-modal.css" rel="stylesheet"/>
+<!-- search scripts -->
+<script>
+    var base_url = "..",
+    shortcuts = "{}";
+</script>
+<script defer="" src="../js/jquery/jquery-1.10.1.min.js"></script>
+<script defer="" src="../js/bootstrap/bootstrap.min.js"></script>
+<script defer="" src="../js/mkdocs/base.js"></script>
+<script src="../search/main.js"></script>
+</link></link></link></meta></meta></link><meta content="Index" name="title"/><meta content="website" property="og:type"/><meta content="https://d-sys.wiki/fundamentals" property="og:url"/><meta content="Index" property="og:title"/><meta content="A comprehensive guide to distributed systems fundamentals covering definitions, CAP theorem, architectures, core components, and key design considerations for building resilient and scalable systems" property="og:description"/><meta content="https://d-sys.wiki/img/captradeoff.jpg" property="og:image"/><meta content="summary_large_image" property="twitter:card"/><meta content="https://d-sys.wiki/fundamentals" property="twitter:url"/><meta content="Index" property="twitter:title"/><meta content="A comprehensive guide to distributed systems fundamentals covering definitions, CAP theorem, architectures, core components, and key design considerations for building resilient and scalable systems" property="twitter:description"/><meta content="https://d-sys.wiki/img/captradeoff.jpg" property="twitter:image"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Index", "image": ["https://d-sys.wiki/img/captradeoff.jpg"], "datePublished": "2025-03-23 20:38:28 -0700", "dateModified": "2025-03-23 20:38:28 -0700", "author": [{"@type": "Organization", "name": "Ultralytics", "url": "https://ultralytics.com/"}], "abstract": "A comprehensive guide to distributed systems fundamentals covering definitions, CAP theorem, architectures, core components, and key design considerations for building resilient and scalable systems"}</script></head>
+<body class="terminal"><div class="container">
+<div class="terminal-nav">
+<header class="terminal-logo">
+<div class="logo terminal-prompt" id="mkdocs-terminal-site-name"><a class="no-style" href="https://d-sys.wiki/">d-sys.wiki</a></div>
+</header>
+<nav class="terminal-menu">
+<ul typeof="BreadcrumbList" vocab="https://schema.org/">
+<li property="itemListElement" typeof="ListItem">
+<a class="menu-item" href=".." property="item" typeof="WebPage">
+<span property="name">home</span>
+</a>
+<meta content="0" property="position"/>
+</li>
+<li property="itemListElement" typeof="ListItem">
+<a class="menu-item" href="../llms.txt" property="item" typeof="WebPage">
+<span property="name">llms</span>
+</a>
+<meta content="1" property="position"/>
+</li>
+<li property="itemListElement" typeof="ListItem">
+<a class="menu-item" href="../feed_rss_updated.xml" property="item" typeof="WebPage">
+<span property="name">rss</span>
+</a>
+<meta content="2" property="position"/>
+</li>
+<li property="itemListElement" typeof="ListItem">
+<a class="menu-item" data-target="#mkdocs_search_modal" data-toggle="modal" href="#" property="item" typeof="SearchAction">
+<i aria-hidden="true" class="fa fa-search"></i> <span property="name">Search</span>
+</a>
+<meta content="3" property="position"/>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="container">
+<div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+<ul class="terminal-mkdocs-side-nav-items">
+<li class="terminal-mkdocs-side-nav-li">
+<a class="terminal-mkdocs-side-nav-item" href="..">home</a>
+</li>
+<li class="terminal-mkdocs-side-nav-li">
+<span class="terminal-mkdocs-side-nav-item--active--active">fundamentals</span>
+<ul class="terminal-mkdocs-side-nav-li-ul">
+</ul>
+</li>
+<li class="terminal-mkdocs-side-nav-li">
+<a class="terminal-mkdocs-side-nav-item" href="../llms.txt">llms</a>
+</li>
+<li class="terminal-mkdocs-side-nav-li">
+<a class="terminal-mkdocs-side-nav-item" href="../feed_rss_updated.xml">rss</a>
+</li>
+</ul>
+</nav><hr/>
+<nav>
+<ul>
+<li><a href="#distributed-systems-fundamentals">distributed systems fundamentals</a></li>
+<li><a href="#what-are-distributed-systems">what are distributed systems?</a></li><li><a href="#the-cap-theorem">the cap theorem</a></li><li><a href="#distributed-system-architectures">distributed system architectures</a></li><li><a href="#core-components-of-distributed-systems">core components of distributed systems</a></li><li><a href="#key-design-considerations">key design considerations</a></li>
+</ul>
+</nav>
+</aside>
+<main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+<h1 id="distributed-systems-fundamentals">distributed systems fundamentals<a class="headerlink" href="#distributed-systems-fundamentals" title="Anchor link to this section for reference">⁂</a></h1>
+<h2 id="what-are-distributed-systems">what are distributed systems?<a class="headerlink" href="#what-are-distributed-systems" title="Anchor link to this section for reference">⁂</a></h2>
+<p><strong>distributed systems</strong> are networks of independent computers (nodes) communicating through message passing, collaboratively delivering unified services or achieving shared objectives. each node maintains its own memory, processing capability, and local storage, working concurrently and autonomously. nodes interact through standardized protocols and interfaces, allowing the system to function effectively across geographic distances, network delays, and varied hardware or software platforms.</p>
+<p>the primary advantages of distributed systems include:</p>
+<ul>
+<li><strong>scalability</strong>: ability to handle growing workloads by adding more resources</li>
+<li><strong>fault tolerance</strong>: continuing operation despite component failures</li>
+<li><strong>resilience</strong>: recovering from failures automatically</li>
+<li><strong>efficient resource utilization</strong>: optimizing use of computing resources across the network</li>
+</ul>
+<p>these systems range from small local networks to globe-spanning cloud infrastructures, powering everything from web applications to financial systems and massive data processing pipelines.</p>
+<h2 id="the-cap-theorem">the cap theorem<a class="headerlink" href="#the-cap-theorem" title="Anchor link to this section for reference">⁂</a></h2>
+<p>distributed systems embody three essential properties described by the <strong>cap theorem</strong>, formulated by eric brewer in 1998:</p>
+<ul>
+<li><strong>consistency</strong>: ensuring all nodes have a synchronized and accurate view of data. when a write operation completes, all subsequent read operations should reflect that write.</li>
+<li><strong>availability</strong>: providing reliable access and responses to user requests. every request to a non-failing node must receive a response, without guaranteeing it contains the most recent write.</li>
+<li><strong>partition tolerance</strong>: maintaining operation despite network partitions or node failures. the system continues functioning even when network communication between some nodes is unreliable.</li>
+</ul>
+<p>the cap theorem dictates that no system can simultaneously achieve all three properties at full strength. system architects must strategically balance these properties based on specific application requirements:</p>
+<ul>
+<li><strong>cp systems</strong> (consistency + partition tolerance): prioritize data consistency at the potential cost of availability during partitions. examples include traditional banking systems and distributed databases like google spanner.</li>
+<li><strong>ap systems</strong> (availability + partition tolerance): favor availability over strict consistency. examples include nosql databases like amazon dynamodb and cassandra.</li>
+<li><strong>ca systems</strong> (consistency + availability): optimize for both properties but cannot handle network partitions effectively. these systems are theoretical in distributed environments, as partition tolerance is generally required.</li>
+</ul>
+<h2 id="distributed-system-architectures">distributed system architectures<a class="headerlink" href="#distributed-system-architectures" title="Anchor link to this section for reference">⁂</a></h2>
+<p>distributed systems employ diverse architectural patterns to address varying use cases:</p>
+<h3 id="client-server-architecture">client-server architecture<a class="headerlink" href="#client-server-architecture" title="Anchor link to this section for reference">⁂</a></h3>
+<p>centralizes resource management with dedicated servers responding to client requests. this architecture is ideal for predictable workloads and clear separation of concerns.</p>
+<p><strong>characteristics</strong>:</p>
+<ul>
+<li>clear separation between service providers (servers) and consumers (clients)</li>
+<li>centralized resource management</li>
+<li>relatively simple to implement and understand</li>
+</ul>
+<p><strong>examples</strong>: traditional web applications, email services, file servers</p>
+<h3 id="peer-to-peer-p2p-architecture">peer-to-peer (p2p) architecture<a class="headerlink" href="#peer-to-peer-p2p-architecture" title="Anchor link to this section for reference">⁂</a></h3>
+<p>distributes responsibilities evenly among equivalent nodes, improving resilience and scalability. each node can act as both client and server.</p>
+<p><strong>characteristics</strong>:</p>
+<ul>
+<li>no centralized control</li>
+<li>high resilience to node failures</li>
+<li>excellent scalability</li>
+<li>complex coordination requirements</li>
+</ul>
+<p><strong>examples</strong>: bittorrent, blockchain networks, distributed file systems</p>
+<h3 id="microservices-architecture">microservices architecture<a class="headerlink" href="#microservices-architecture" title="Anchor link to this section for reference">⁂</a></h3>
+<p>decomposes applications into loosely coupled, independent services, streamlining development and deployment. each service handles a specific function and can be developed, deployed, and scaled independently.</p>
+<p><strong>characteristics</strong>:</p>
+<ul>
+<li>service independence</li>
+<li>technology diversity</li>
+<li>focused development teams</li>
+<li>complex orchestration</li>
+</ul>
+<p><strong>examples</strong>: netflix, amazon, uber applications</p>
+<h3 id="event-driven-architecture">event-driven architecture<a class="headerlink" href="#event-driven-architecture" title="Anchor link to this section for reference">⁂</a></h3>
+<p>utilizes asynchronous communication via events or messages, enhancing flexibility and responsiveness. components react to events rather than direct calls.</p>
+<p><strong>characteristics</strong>:</p>
+<ul>
+<li>loose coupling between components</li>
+<li>asynchronous processing</li>
+<li>enhanced scalability</li>
+<li>complex debugging and testing</li>
+</ul>
+<p><strong>examples</strong>: iot systems, real-time analytics platforms, financial trading systems</p>
+<h3 id="service-oriented-architecture-soa">service-oriented architecture (soa)<a class="headerlink" href="#service-oriented-architecture-soa" title="Anchor link to this section for reference">⁂</a></h3>
+<p>encapsulates functionalities into reusable, interoperable services with standardized interfaces. this approach emphasizes service reusability and composition.</p>
+<p><strong>characteristics</strong>:</p>
+<ul>
+<li>business-aligned services</li>
+<li>standardized interfaces</li>
+<li>service reusability</li>
+<li>enterprise service bus (often)</li>
+</ul>
+<p><strong>examples</strong>: enterprise integration systems, banking platforms</p>
+<h2 id="core-components-of-distributed-systems">core components of distributed systems<a class="headerlink" href="#core-components-of-distributed-systems" title="Anchor link to this section for reference">⁂</a></h2>
+<p>typical distributed system components include:</p>
+<table>
+<thead>
+<tr>
+<th>component</th>
+<th>role</th>
+<th>example technologies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>load balancer</strong></td>
+<td>evenly distribute client requests across servers to optimize resource utilization, maximize throughput, and ensure high availability</td>
+<td>aws elb, nginx, haproxy, f5</td>
+</tr>
+<tr>
+<td><strong>message queue</strong></td>
+<td>enable asynchronous communication between services, providing buffering, decoupling, and reliable message delivery</td>
+<td>apache kafka, rabbitmq, aws sqs, azure service bus</td>
+</tr>
+<tr>
+<td><strong>database (relational)</strong></td>
+<td>store structured data with acid properties, supporting complex queries and transactions</td>
+<td>postgresql, mysql, oracle, sql server</td>
+</tr>
+<tr>
+<td><strong>database (nosql)</strong></td>
+<td>provide flexible, schema-less data storage optimized for specific data models and high scalability</td>
+<td>mongodb, cassandra, dynamodb, couchbase</td>
+</tr>
+<tr>
+<td><strong>cache</strong></td>
+<td>store frequently accessed data in memory to reduce latency and database load</td>
+<td>redis, memcached, hazelcast</td>
+</tr>
+<tr>
+<td><strong>orchestration platform</strong></td>
+<td>automate deployment, scaling, and management of containerized services</td>
+<td>kubernetes, docker swarm, aws ecs, nomad</td>
+</tr>
+<tr>
+<td><strong>service discovery</strong></td>
+<td>enable services to find and communicate with each other dynamically</td>
+<td>consul, etcd, zookeeper</td>
+</tr>
+<tr>
+<td><strong>api gateway</strong></td>
+<td>provide a unified entry point for clients, handling cross-cutting concerns like authentication and rate limiting</td>
+<td>kong, amazon api gateway, apigee</td>
+</tr>
+<tr>
+<td><strong>consensus algorithm</strong></td>
+<td>achieve agreement on shared state across distributed nodes</td>
+<td>paxos, raft, zab</td>
+</tr>
+<tr>
+<td><strong>distributed tracing</strong></td>
+<td>track and visualize request flows across multiple services for debugging and monitoring</td>
+<td>jaeger, zipkin, aws x-ray</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-design-considerations">key design considerations<a class="headerlink" href="#key-design-considerations" title="Anchor link to this section for reference">⁂</a></h2>
+<p>designing robust distributed systems requires addressing several critical concerns:</p>
+<h3 id="performance-optimization">performance optimization<a class="headerlink" href="#performance-optimization" title="Anchor link to this section for reference">⁂</a></h3>
+<ul>
+<li><strong>latency</strong>: minimize response time through caching, cdns, and optimized data access patterns</li>
+<li><strong>throughput</strong>: maximize system capacity through horizontal scaling and efficient resource utilization</li>
+<li><strong>network efficiency</strong>: reduce bandwidth consumption with compression, batching, and protocol optimization</li>
+</ul>
+<h3 id="consistency-models">consistency models<a class="headerlink" href="#consistency-models" title="Anchor link to this section for reference">⁂</a></h3>
+<ul>
+<li><strong>strong consistency</strong>: all nodes see the same data at the same time (e.g., linearizability)</li>
+<li><strong>eventual consistency</strong>: system will become consistent given enough time without updates</li>
+<li><strong>causal consistency</strong>: operations that are causally related appear in the same order to all nodes</li>
+<li><strong>session consistency</strong>: client operations in a session are consistent with their own operations</li>
+</ul>
+<h3 id="data-management">data management<a class="headerlink" href="#data-management" title="Anchor link to this section for reference">⁂</a></h3>
+<ul>
+<li><strong>replication strategies</strong>: synchronous vs. asynchronous, active-active vs. active-passive</li>
+<li><strong>sharding approaches</strong>: range-based, hash-based, directory-based partitioning</li>
+<li><strong>data synchronization</strong>: conflict detection and resolution mechanisms</li>
+</ul>
+<h3 id="fault-tolerance-and-recovery">fault tolerance and recovery<a class="headerlink" href="#fault-tolerance-and-recovery" title="Anchor link to this section for reference">⁂</a></h3>
+<ul>
+<li><strong>failure detection</strong>: heartbeats, gossip protocols, and health checks</li>
+<li><strong>redundancy</strong>: multiple instances, geographic distribution, and standby systems</li>
+<li><strong>graceful degradation</strong>: maintaining core functionality during partial system failures</li>
+<li><strong>self-healing mechanisms</strong>: automated recovery and repair procedures</li>
+</ul>
+<h3 id="security-considerations">security considerations<a class="headerlink" href="#security-considerations" title="Anchor link to this section for reference">⁂</a></h3>
+<ul>
+<li><strong>authentication and authorization</strong>: verifying identity and controlling access rights</li>
+<li><strong>encryption</strong>: protecting data at rest and in transit</li>
+<li><strong>network segmentation</strong>: limiting attack surfaces through isolation</li>
+<li><strong>audit logging</strong>: recording security-relevant events for compliance and forensics</li>
+</ul>
+<h3 id="monitoring-and-observability">monitoring and observability<a class="headerlink" href="#monitoring-and-observability" title="Anchor link to this section for reference">⁂</a></h3>
+<ul>
+<li><strong>metrics collection</strong>: gathering performance and health indicators</li>
+<li><strong>distributed tracing</strong>: following requests across service boundaries</li>
+<li><strong>log aggregation</strong>: centralizing and analyzing system logs</li>
+<li><strong>alerting</strong>: detecting and notifying about critical conditions</li>
+</ul>
+</section>
+<section id="mkdocs-terminal-after-content">
+</section>
+<section id="mkdocs-terminal-revision">
+<br/>
+<aside>
+<p>
+<small>
+<i>Page last updated 2025-03-23. See revision history on <a href="https://github.com/captradeoff/d-sys-wiki/commits/master/docs/fundamentals/index.md">GitHub</a>.</i>
+</small>
+</p>
+</aside>
+</section>
+</main>
+</div>
+<hr/>
+<div style="width: 100%; text-align: center; margin: 15px auto;">
+<a class="hover-item" href="#" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), 'TwitterShare', 'width=550,height=680,menubar=no,toolbar=no'); return false;" style="color: white; margin: 0 15px; display: inline-block;">
+<i class="fa-brands fa-x-twitter"></i> Share on X
+    </a>
+<a class="hover-item" href="#" onclick="window.open('https://www.linkedin.com/shareArticle?url=' + encodeURIComponent(window.location.href), 'LinkedinShare', 'width=550,height=730,menubar=no,toolbar=no'); return false;" style="color: white; margin: 0 15px; display: inline-block;">
+<i class="fa-brands fa-linkedin-in"></i> Share on LinkedIn
+    </a>
+</div>
+<p style="text-align: center;">this work is dedicated to the public domain under CC0 1.0. <a href="/license/">license</a></p>
+<table class="table table-striped table-hover">
+<tbody>
+<tr>
+<td style="text-align: center">
+<a href="https://x.com/i/communities/1903531139035476424">join x community</a>
+</td>
+<td style="text-align: center">
+<a href="https://github.com/captradeoff/d-sys-wiki/issues">open an issue</a>
+</td>
+<td style="text-align: center">
+<a href="https://x.com/captradeoff">follow on x</a>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">
+<a href="https://discord.gg/abnrNxa7J5">join discord server</a>
+</td>
+<td style="text-align: center">
+<a href="https://github.com/captradeoff/d-sys-wiki/fork">fork this repo</a>
+</td>
+<td style="text-align: center">
+<a href="https://github.com/captradeoff">follow on github</a>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: center;"><a href="https://github.com/captradeoff/d-sys-wiki-documentation-template">d-sys.wiki documentation template</a></p>
+</div>
+<div aria-labelledby="searchModalLabel" aria-modal="true" class="modal" id="mkdocs_search_modal" role="alertdialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="search">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="searchModalLabel">Search</h5>
+<button class="close btn btn-default btn-ghost" data-dismiss="modal" type="button"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<p id="searchInputLabel">Type to start searching</p>
+<form>
+<div class="form-group">
+<input aria-labelledby="searchInputLabel" class="form-control" id="mkdocs-search-query" placeholder="" title="Please enter search terms here" type="search"/>
+</div>
+</form>
+<div data-no-results-text="No document matches found" id="mkdocs-search-results"></div>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
